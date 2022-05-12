@@ -1,0 +1,23 @@
+{
+  "name": "237-chat",
+  "version": "1.0.0",
+  "description": "A Chat Web app build with ReactJS, NodeJS and GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rigole/237-Chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rigole/237-Chat/issues"
+  },
+  "homepage": "https://github.com/rigole/237-Chat#readme",
+  "dependencies": {
+    "apollo-server": "^3.7.0",
+    "graphql": "^16.5.0"
+  }
+}
