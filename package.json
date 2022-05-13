@@ -2,6 +2,7 @@
   "name": "237-chat",
   "version": "1.0.0",
   "description": "A Chat Web app build with ReactJS, NodeJS and GraphQL",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
