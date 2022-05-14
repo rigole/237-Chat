@@ -3,7 +3,8 @@ import  { ApolloServer, gql } from 'apollo-server';
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
-const typeDefs = gql`
+
+/*const typeDefs = gql`
   
   type Book {
     title: String
@@ -15,6 +16,49 @@ const typeDefs = gql`
     books: [Book]
   }
 `;
+*/
+
+
+const users = [
+    {
+        id:1,
+        firstName:"Plass",
+        LastName:"Rigole",
+        email:"foplacide@gmail.com",
+        password:"123456"
+    },
+    {
+        id:2,
+        firstName:"Marie-Claire",
+        LastName: "Kemeni",
+        email:"contact@fomi.com",
+        password:"19371966",
+
+    },
+]
+
+const typeDefs = gql`
+    type Query{
+        users:[User]
+    }
+    
+    type User{
+        id:ID
+        firstName:String
+        lastName:String
+        email:String
+    }
+
+
+`
+
+const resolvers = {
+    Query:{
+        users:()=>users
+    }
+}
+
+
 
 const books = [
     {
@@ -27,11 +71,11 @@ const books = [
     },
 ];
 
-const resolvers = {
+/*const resolvers = {
     Query: {
         books: () => books,
     },
-};
+};*/
 
 const server = new ApolloServer({
     typeDefs,
