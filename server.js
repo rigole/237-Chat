@@ -42,15 +42,15 @@ const typeDefs = gql`
         users:[User]
         user(id:ID!):User
     }
-    
+    type Mutation{
+        createUser(firstName:String!,lastName:String!,email:String!,password:String!):User
+    }
     type User{
         id:ID
         firstName:String
         lastName:String
         email:String
     }
-
-
 `
 
 const resolvers = {
