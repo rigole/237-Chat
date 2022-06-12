@@ -5,7 +5,9 @@ const resolvers = {
 
     },
     Mutation:{
+        signupUser:(_,{userNew}) =>{
 
+        }
     },
 
 }

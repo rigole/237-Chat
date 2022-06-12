@@ -13,6 +13,10 @@ const typeDefs = gql`
         password:String!
     }
     
+    type Mutation {
+        signupUser(userNew:UserInput!):User
+    }
+    
     type User{
         id:ID
         firstName:String
