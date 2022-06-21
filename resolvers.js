@@ -7,7 +7,10 @@ const prisma = new PrismaClient()
 
 const resolvers = {
     Query:{
-
+        users: async ()=>{
+           const users =  await prisma.user.findMany()
+            return users
+        }
     },
     Mutation:{
         signupUser: async (_,{userNew}) =>{
