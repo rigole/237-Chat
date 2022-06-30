@@ -9,7 +9,7 @@ const prisma = new PrismaClient()
 
 const resolvers = {
     Query:{
-        users: async (_, args, {userId})=>{
+     /*   users: async (_, args, {userId})=>{
             console.log(userId)
             if(!userId) throw new ForbiddenError("You must be logged in")
             const users =  await prisma.user.findMany({
@@ -23,6 +23,22 @@ const resolvers = {
                     }
                 }
 
+            })
+            return users
+        }*/
+
+        users:async (_,args,{userId})=>{
+            console.log(userId)
+            if(!userId) throw new ForbiddenError("You must be logged in")
+            const users = await prisma.user.findMany({
+                orderBy: {
+                  createdAt:"desc"
+                },
+                where:{
+                    id:{
+                        not:userId
+                    }
+                }
             })
             return users
         }

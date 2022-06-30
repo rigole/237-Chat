@@ -25,10 +25,17 @@ const books = [
 const server = new ApolloServer({
         typeDefs,
         resolvers,
-        context:({req})=>{
+        /*context:({req})=>{
             const {authorization} = req.headers
             if(authorization){
                const {userId} = jwt.verify(authorization, process.env.JWT_SECRET)
+                return {userId}
+            }
+        }*/
+        context:({req})=>{
+            const {authorization} = req.headers
+            if (authorization){
+                const {userId} = jwt.verify(authorization, process.env.JWT_SECRET)
                 return {userId}
             }
         }
