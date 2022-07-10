@@ -41,6 +41,21 @@ const resolvers = {
                 }
             })
             return users
+        },
+
+        messagesByUser: async (_, {receiverId}, {userId})=> {
+            if(!userId) throw new ForbiddenError("You must be Logged in")
+            await prisma.message.findMany({
+                where:{
+                    OR:[
+                        {
+                            senderId:userId,
+                            receiverId:receiverId
+                        }
+                    ]
+
+                }
+            })
         }
     },
     Mutation:{
@@ -56,13 +71,26 @@ const resolvers = {
             })
             return newUser
         },
+
         signinUser: async (_,{userSignin})=>{
             const user = await prisma.user.findUnique({where:{email:userSignin.email}})
             if(!user) throw new Error("Check your email again")
-            const doMatch = await bcrypt.compare(userSignin.pass, user.password)
+            const doMatch = await bcrypt.compare(userSignin.password, user.password)
             if(!doMatch) throw new Error("email or  password is not correct")
-            const token = jwt.sign({userId:user.id},process.env.JWT_SECRET)
+            const token = jwt.sign({ userId:user.id }, process.env.JWT_SECRET)
             return {token}
+        },
+        createMessage:async (_,{receiverId, text},{userId})=>{
+            if(!userId) throw new ForbiddenError("you must be logged in")
+            const message  = await prisma.message.create({
+                data:{
+                    text,
+                    receiverId:receiverId,
+                    senderId:userId
+                }
+            })
+
+            return message
         }
     },
 
