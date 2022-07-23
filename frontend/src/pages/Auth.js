@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { Box, Stack, Typography, Button, TextField } from '@mui/material'
+import { Box, Stack, Typography, Button, TextField, Card } from '@mui/material'
 
 const AuthScreen = () => {
     const [formData, setFormData] = useState({})
+    const [showLogin, setShowLogin] = useState(true)
 
     const handleChange = (e) => {
         setFormData({
@@ -26,40 +27,53 @@ const AuthScreen = () => {
             alignItems="center"
             height="80vh"
         >
-            <Stack
-                direction="column"
-                spacing={2}
-                sx={{width:"400px"}}
+            <Card
+                variant="outlined"
+                sx={{padding:"10px"}}
             >
-                <Typography variant="h5">Please Signup</Typography>
-                <TextField
-                    name="firstName"
-                    label="First Name"
-                    variant="standard"
-                    onChange={handleChange}
-                />
-                <TextField
-                    name="lastName"
-                    label="Last Name"
-                    variant="standard"
-                    onChange={handleChange}
-                />
-                <TextField
-                    type="email"
-                    name="email"
-                    label="email"
-                    variant="standard"
-                    onChange={handleChange}
-                />
-                <TextField
-                    type="password"
-                    name="password"
-                    label="password"
-                    variant="standard"
-                    onChange={handleChange}
-                />
-                <Button variant="outlined" type="submit">Submit</Button>
-            </Stack>
+                <Stack
+                    direction="column"
+                    spacing={2}
+                    sx={{width:"400px"}}
+                >
+                    <Typography variant="h5">Please {showLogin ? "Sign In" : "Sign Up"} </Typography>
+                    {
+                        !showLogin &&
+                        <>
+
+                            <TextField
+                                name="firstName"
+                                label="First Name"
+                                variant="standard"
+                                onChange={handleChange}
+                            />
+                            <TextField
+                                name="lastName"
+                                label="Last Name"
+                                variant="standard"
+                                onChange={handleChange}
+                            />
+
+                        </>
+                    }
+
+                    <TextField
+                        type="email"
+                        name="email"
+                        label="email"
+                        variant="standard"
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        type="password"
+                        name="password"
+                        label="password"
+                        variant="standard"
+                        onChange={handleChange}
+                    />
+                    <Button variant="outlined" type="submit">{showLogin ? "Sign In" : "Sign Up"}</Button>
+                </Stack>
+            </Card>
         </Box>
     )
 }
