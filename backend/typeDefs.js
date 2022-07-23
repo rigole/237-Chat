@@ -32,6 +32,9 @@ const typeDefs = gql`
         createdAt: Date!
     }
     
+    
+    
+    
     type Mutation {
         signupUser(userNew:UserInput!):User
         signinUser(userSignin:UserSigninInput!):Token
