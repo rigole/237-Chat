@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { ForbiddenError } from "apollo-server";
 
+//npx prisma studio
 
 const prisma = new PrismaClient()
 
@@ -48,12 +49,12 @@ const resolvers = {
             await prisma.message.findMany({
                 where:{
                     OR:[
-                        {
-                            senderId:userId,
-                            receiverId:receiverId
-                        }
+                        {senderId:userId, receiverId:receiverId},
+                        {senderId: receiverId, receiverId: userId}
                     ]
-
+                },
+                orderBy:{
+                    createdAt:"asc"
                 }
             })
         }
