@@ -1,12 +1,12 @@
 import AuthScreen from "./pages/Auth"
 import './App.css';
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
-      <div>
-        <h1>Hello</h1>
-        <AuthScreen/>
-      </div>
+
+        /* <AuthScreen/>*/
+      <HomePage/>
 
   );
 }
