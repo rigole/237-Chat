@@ -11,7 +11,12 @@ const SideBar = () => {
     ]
 
     return (
-        <Box>
+        <Box
+        backgroundColor="#f7f7f7"
+        height="100vh"
+        minWidth="250px"
+        padding="10px"
+        >
             <Typography variant="h6">Chat</Typography>
             <Divider/>
             {

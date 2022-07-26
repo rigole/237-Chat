@@ -1,9 +1,20 @@
 import React from 'react'
+import { Stack, Avatar, Typography } from '@mui/material'
 
 const UserCard = ({item:{firstName, lastName, id}}) => {
 
     return (
-        <div>{firstName}</div>
+        <Stack
+            direction="row"
+            spacing={8}
+            sx={{py:1}}
+        >
+            <Avatar
+                src={`https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`}
+                sx={{width:"32px", height:"32px"}}
+            />
+            <Typography variant="subtitle2">{firstName} {lastName}</Typography>
+        </Stack>
     )
 }
 
