@@ -5,8 +5,9 @@ const UserCard = ({item:{firstName, lastName, id}}) => {
 
     return (
         <Stack
+            className="usercard"
             direction="row"
-            spacing={8}
+            spacing={2}
             sx={{py:1}}
         >
             <Avatar
