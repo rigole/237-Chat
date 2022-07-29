@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, AppBar, Toolbar, Typography,Avatar } from "@mui/material"
+import { Box, AppBar, Toolbar, Typography,Avatar, TextField } from "@mui/material"
 import {useParams} from "react-router-dom";
 
 const ChatScreen = () => {
@@ -19,11 +19,21 @@ const ChatScreen = () => {
                 <Toolbar>
                     <Avatar
                         src={`https://avatars.dicebear.com/api/initials/${name}.svg`}
-                        sx={{width:"32px", height:"32px"}}
+                        sx={{width:"32px", height:"32px", mr:2}}
                     />
                     <Typography variant="h6" color="black">{name}</Typography>
                 </Toolbar>
             </AppBar>
+            <Box backgroundColor="#f5f5f5" height="80vh">
+                hi
+            </Box>
+            <TextField
+                placeholder="Enter a message"
+                variant="standard"
+                fullWidth
+                multiline
+                rows={2}
+            />
 
         </Box>
     )
