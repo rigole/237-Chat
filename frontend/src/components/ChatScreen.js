@@ -1,4 +1,5 @@
 import React from 'react'
+import MessageCard from "./MessageCard"
 
 import { Box, AppBar, Toolbar, Typography,Avatar, TextField } from "@mui/material"
 import {useParams} from "react-router-dom";
@@ -24,8 +25,24 @@ const ChatScreen = () => {
                     <Typography variant="h6" color="black">{name}</Typography>
                 </Toolbar>
             </AppBar>
-            <Box backgroundColor="#f5f5f5" height="80vh">
-                hi
+            <Box backgroundColor="#f5f5f5" height="80vh" padding="10px" sx={{overflowY:"auto"}}>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
             </Box>
             <TextField
                 placeholder="Enter a message"
