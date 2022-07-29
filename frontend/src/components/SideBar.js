@@ -5,9 +5,9 @@ const SideBar = () => {
 
 
     const users = [
-        {id:1, firstName:"Marie-Claire", lastName:"Kemeni"},
-        {id:2, firstName:"Michel", lastName:"Foleu"},
-        {id:3, firstName:"Placide", lastName:"Foleu"}
+        {id:1, firstName:"Marie-Claire", lastName:"KEMENI"},
+        {id:2, firstName:"Michel", lastName:"FOLEU"},
+        {id:3, firstName:"Placide", lastName:"FOLEU"}
     ]
 
     return (
