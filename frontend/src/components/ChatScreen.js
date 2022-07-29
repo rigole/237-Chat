@@ -25,7 +25,21 @@ const ChatScreen = () => {
                     <Typography variant="h6" color="black">{name}</Typography>
                 </Toolbar>
             </AppBar>
-            <Box backgroundColor="#f5f5f5" height="80vh">
+            <Box backgroundColor="#f5f5f5" height="80vh" padding="10px" sx={{overflowY:"auto"}}>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
                 <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
                 <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
                 <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
