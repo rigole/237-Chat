@@ -1,4 +1,5 @@
 import React from 'react'
+import MessageCard from "./MessageCard"
 
 import { Box, AppBar, Toolbar, Typography,Avatar, TextField } from "@mui/material"
 import {useParams} from "react-router-dom";
@@ -25,7 +26,9 @@ const ChatScreen = () => {
                 </Toolbar>
             </AppBar>
             <Box backgroundColor="#f5f5f5" height="80vh">
-                hi
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="end"/>
+                <MessageCard text="Yo plass" date="14-06-1993" direction="start"/>
             </Box>
             <TextField
                 placeholder="Enter a message"
