@@ -7,13 +7,10 @@ import {useParams} from "react-router-dom";
 const ChatScreen = () => {
     const {id, name} = useParams()
 
-
-
-
     return (
 
         <Box
-        flexGrow={1}
+            flexGrow={1}
         >
             <AppBar position="static"
             sx={{backgroundColor:"white", boxShadow:0}}>
