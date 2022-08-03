@@ -1,10 +1,32 @@
 import React, {useState, useRef} from 'react'
-import { Box, Stack, Typography, Button, TextField, Card } from '@mui/material'
+import { useMutation } from '@apollo/client'
+import { Box, Stack, Typography, Button, TextField, Card, CircularProgress, Alert } from '@mui/material'
+import { SIGNUP_USER } from "../graphQL/mutations"
 
 const AuthScreen = () => {
     const [formData, setFormData] = useState({})
     const [showLogin, setShowLogin] = useState(true)
     const authForm = useRef(null)
+    const [signupUser, {data: signupData, loading:l1, error:e1}] = useMutation(SIGNUP_USER)
+
+
+    if(true){
+        return(
+            <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100vh"
+            >
+                <Box textAlign="center">
+                    <CircularProgress/>
+                    <Typography variant="h6">Authenticating...</Typography>
+                </Box>
+            </Box>
+
+        )
+    }
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -14,11 +36,21 @@ const AuthScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        //console.log(formData)
+        if (showLogin) {
+
+        } else {
+            signupUser({
+                variables:{
+                    userNew:formData
+                }
+            })
+        }
 
     }
 
     return (
+
         <Box
             ref={authForm}
             component="form"
@@ -37,6 +69,8 @@ const AuthScreen = () => {
                     spacing={2}
                     sx={{width:"400px"}}
                 >
+                    {signupData && <Alert severity="success">{signupData.signupUser.firstName} Subscribed </Alert>}
+                    {e1 && <Alert severity="error">{e1.message}</Alert>}
                     <Typography variant="h5">Please {showLogin ? "Sign In" : "Sign Up"} </Typography>
                     {
                         !showLogin &&
