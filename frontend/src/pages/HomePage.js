@@ -14,12 +14,12 @@ const AllRoutes = () => {
     )
 }
 
-const  HomePage =  () =>{
+const  HomePage = ({setloggedIn}) =>{
     return (
         <Box
         display="flex"
         >
-            <SideBar/>
+            <SideBar setloggedIn={setloggedIn} />
             <AllRoutes/>
         </Box>
     )
