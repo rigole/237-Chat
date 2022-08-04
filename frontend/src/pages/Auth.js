@@ -1,16 +1,25 @@
 import React, {useState, useRef} from 'react'
 import { useMutation } from '@apollo/client'
 import { Box, Stack, Typography, Button, TextField, Card, CircularProgress, Alert } from '@mui/material'
-import { SIGNUP_USER } from "../graphQL/mutations"
+import { SIGNUP_USER, SIGNIN_USER } from "../graphQL/mutations"
 
 const AuthScreen = () => {
     const [formData, setFormData] = useState({})
     const [showLogin, setShowLogin] = useState(true)
     const authForm = useRef(null)
     const [signupUser, {data: signupData, loading:l1, error:e1}] = useMutation(SIGNUP_USER)
+    const [signinUser, {data:signinData, loading:l2, error:e2}] = useMutation(SIGNIN_USER, {
+        onCompleted(data){
+            console.log(data)
+            localStorage.setItem("jwt", data.signinUser.token)
+        }
+    })
 
+    if(signinData){
 
-    if(true){
+    }
+
+    if(l1 || l2){
         return(
             <Box
             display="flex"
@@ -38,7 +47,11 @@ const AuthScreen = () => {
         e.preventDefault()
         //console.log(formData)
         if (showLogin) {
-
+            signinUser({
+                variables:{
+                    userSignin:formData
+                }
+            })
         } else {
             signupUser({
                 variables:{
@@ -71,6 +84,7 @@ const AuthScreen = () => {
                 >
                     {signupData && <Alert severity="success">{signupData.signupUser.firstName} Subscribed </Alert>}
                     {e1 && <Alert severity="error">{e1.message}</Alert>}
+                    {e2 && <Alert severity="error">{e2.message}</Alert>}
                     <Typography variant="h5">Please {showLogin ? "Sign In" : "Sign Up"} </Typography>
                     {
                         !showLogin &&
@@ -81,12 +95,14 @@ const AuthScreen = () => {
                                 label="First Name"
                                 variant="standard"
                                 onChange={handleChange}
+                                required
                             />
                             <TextField
                                 name="lastName"
                                 label="Last Name"
                                 variant="standard"
                                 onChange={handleChange}
+                                required
                             />
 
                         </>
@@ -98,6 +114,7 @@ const AuthScreen = () => {
                         label="email"
                         variant="standard"
                         onChange={handleChange}
+                        required
                     />
                     <TextField
                         type="password"
@@ -105,6 +122,7 @@ const AuthScreen = () => {
                         label="password"
                         variant="standard"
                         onChange={handleChange}
+                        required
                     />
                     <Typography varaint="subtitle1" onClick={()=> {
                         setShowLogin((preValue) => !preValue)
