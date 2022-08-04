@@ -3,15 +3,15 @@ import { useMutation } from '@apollo/client'
 import { Box, Stack, Typography, Button, TextField, Card, CircularProgress, Alert } from '@mui/material'
 import { SIGNUP_USER, SIGNIN_USER } from "../graphQL/mutations"
 
-const AuthScreen = () => {
+const AuthScreen = ({setloggedIn}) => {
     const [formData, setFormData] = useState({})
     const [showLogin, setShowLogin] = useState(true)
     const authForm = useRef(null)
     const [signupUser, {data: signupData, loading:l1, error:e1}] = useMutation(SIGNUP_USER)
     const [signinUser, {data:signinData, loading:l2, error:e2}] = useMutation(SIGNIN_USER, {
         onCompleted(data){
-            console.log(data)
             localStorage.setItem("jwt", data.signinUser.token)
+            setloggedIn(true)
         }
     })
 
