@@ -4,11 +4,26 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
+import { setContext } from '@apollo/client/link/context'
 import {
     ApolloClient,
     InMemoryCache,
     ApolloProvider,
 } from "@apollo/client";
+
+const httpLink = createHttpLink({
+    uri: 'http://localhost:4000/'
+})
+const authLink = setContext((_, { headers }) => {
+
+    return {
+        headers: {
+            ...headers,
+            authorization: localStorage.getItem("jwt") || "",
+        }
+    }
+});
+
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/',
